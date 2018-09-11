@@ -3,4 +3,10 @@
     <string name="app_name">AndroidLabs</string>
     <string name="hello_message">你好!</string>
     <string name="ButtonText">我是一个按钮</string>
+    <string name="login">用户登录</string>
+    <string name="login_name">用户名</string>
+    <string name="password">密码</string>
+    <string name="radio_button">单选框</string>
+    <string name="check_box">复选框</string>
+    <string name="sw">这是什么?</string>
 </resources>
