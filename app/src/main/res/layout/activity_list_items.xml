@@ -5,26 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:columnCount="2"
-    tools:context=".ListItemsActivity"
     tools:rowCount="2">
+
 
 
     <RadioButton
         android:layout_columnWeight="1"
+        android:layout_column="0"
+        android:layout_row="0"
         android:gravity="fill"
         android:text="@string/radio_button" />
 
     <CheckBox
         android:layout_columnWeight="1"
+        android:layout_column="1"
+        android:layout_row="0"
         android:gravity="fill"
         android:text="@string/check_box"/>
     <Switch
         android:layout_columnWeight="1"
+        android:layout_column="0"
+        android:layout_row="1"
         android:gravity="fill"
         android:text="@string/sw"/>
 
     <ImageView
         android:layout_columnWeight="1"
+        android:layout_column="1"
+        android:layout_row="1"
         android:gravity="fill"
         android:src="@android:drawable/ic_menu_camera" />
 </GridLayout>
