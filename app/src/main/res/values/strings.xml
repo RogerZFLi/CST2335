@@ -9,5 +9,14 @@
     <string name="radio_button">RadioButton</string>
     <string name="check_box">CheckBox</string>
     <string name="sw">What does it do</string>
-
+    <string name="login_button">Log in</string>
+    <string name="dialog_message">Do you want to terminate the Activity?</string>
+    <string name="dialog_title">Confirmation</string>
+    <string name="OK">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="response">My information to share</string>
+    <string name="swOn">Switch is on</string>
+    <string name="swOff">Switch is off</string>
+    <string name="description">This is a image choosing button</string>
+    <string name="description2">This is a image</string>
 </resources>

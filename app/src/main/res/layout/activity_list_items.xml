@@ -10,6 +10,7 @@
 
 
     <RadioButton
+        android:id="@+id/rb"
         android:layout_columnWeight="1"
         android:layout_column="0"
         android:layout_row="0"
@@ -17,22 +18,28 @@
         android:text="@string/radio_button" />
 
     <CheckBox
+        android:id="@+id/cb"
         android:layout_columnWeight="1"
         android:layout_column="1"
         android:layout_row="0"
         android:gravity="fill"
         android:text="@string/check_box"/>
     <Switch
+        android:id="@+id/sw"
         android:layout_columnWeight="1"
         android:layout_column="0"
         android:layout_row="1"
         android:gravity="fill"
         android:text="@string/sw"/>
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/ibtn"
+        android:contentDescription="@string/description"
         android:layout_columnWeight="1"
         android:layout_column="1"
         android:layout_row="1"
         android:gravity="fill"
         android:src="@android:drawable/ic_menu_camera" />
+
+
 </GridLayout>

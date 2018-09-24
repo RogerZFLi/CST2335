@@ -9,4 +9,15 @@
     <string name="radio_button">单选框</string>
     <string name="check_box">复选框</string>
     <string name="sw">这是什么?</string>
+    <string name="login_button">登陆</string>
+    <string name="dialog_message">点击确定关闭返回上一窗口，点击取消留在当前界面</string>
+    <string name="dialog_title">确认选项</string>
+    <string name="OK">确定</string>
+    <string name="cancel">取消</string>
+    <string name="response">返回信息</string>
+    <string name="swOn">打开</string>
+    <string name="swOff">关闭</string>
+    <string name="description">图片选择按钮</string>
+    <string name="description2">这是一张图片</string>
+
 </resources>
