@@ -19,5 +19,8 @@
     <string name="swOff">关闭</string>
     <string name="description">图片选择按钮</string>
     <string name="description2">这是一张图片</string>
+    <string name="start_chat">开始聊天</string>
+    <string name="send">发送</string>
+
 
 </resources>

@@ -20,8 +20,6 @@ public class LoginActivity extends Activity {
         Log.i(ACTIVITY_NAME,"In onCreate()");
         Button loginButton = findViewById(R.id.loginButton);
         final EditText loginEmail = findViewById(R.id.login_name);
-
-
         final SharedPreferences prefs = getSharedPreferences("preferredEmail", Context.MODE_PRIVATE);
         loginEmail.setText(prefs.getString("DefaultEmail","email@domain.com"));
 
