@@ -1,7 +1,6 @@
 package com.example.amusu.androidlabs;
 
 import android.app.Activity;
-import android.app.SharedElementCallback;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;

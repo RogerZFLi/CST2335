@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/message_text"
         android:layout_weight="1"
+        android:gravity="end"
         android:layout_gravity="start"
 
         />
@@ -17,7 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/row_even"
-        android:contentDescription=""
+        android:gravity="end"
+        android:contentDescription="women chat"
         />
 
 </LinearLayout>

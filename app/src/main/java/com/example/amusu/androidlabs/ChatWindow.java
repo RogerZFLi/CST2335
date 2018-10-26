@@ -8,51 +8,58 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class ChatWindow extends Activity {
-   static ArrayList<String> chatMessages;
-    EditText editText;
-    Button send;
+   private ArrayList<String> chatMessages;
+   private EditText editText;
+   private Button send;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
         final ListView chatView = findViewById(R.id.chatView);
+        final ChatDatabaseHelper cdh = new ChatDatabaseHelper(this);
+        ChatAdapter messageAdapter =new ChatAdapter( this, chatMessages );
+
+        chatMessages = (ArrayList<String>)cdh.getAllMessages();
         editText = findViewById(R.id.editText);
         send = findViewById(R.id.send);
-        chatMessages = new ArrayList<>();
-
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chatMessages.add(editText.getText().toString());
+                cdh.insertMessage(editText.getText().toString());
                 editText.setText(null);
+
             }
         });
 
+
+
         //in this case, “this” is the ChatWindow, which is-A Context object
-
-        ChatAdapter messageAdapter =new ChatAdapter( this, chatMessages );
-
         chatView.setAdapter (messageAdapter);
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
     private class ChatAdapter extends BaseAdapter {
-        private ArrayList<String> chatMessages;
         private Context context;
 
-        private ChatAdapter(Context context, ArrayList<String> chatMessages) {
+        private ChatAdapter(Context context, ArrayList<String> chatMessage) {
             this.context = context;
-            this.chatMessages = chatMessages;
+            chatMessages = chatMessage;
         }
 
         @Override
