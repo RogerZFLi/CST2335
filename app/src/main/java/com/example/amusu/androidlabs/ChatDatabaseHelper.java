@@ -65,9 +65,6 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
         c.close();
 
     }
-
-
-
 }
 
 

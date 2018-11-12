@@ -19,13 +19,14 @@ public class ChatWindow extends Activity {
    private ArrayList<String> chatMessages;
    private EditText editText;
    private Button send;
+   private ChatDatabaseHelper cdh = new ChatDatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
         final ListView chatView = findViewById(R.id.chatView);
-        final ChatDatabaseHelper cdh = new ChatDatabaseHelper(this);
+
         ChatAdapter messageAdapter =new ChatAdapter( this, chatMessages );
 
         chatMessages = (ArrayList<String>)cdh.getAllMessages();
@@ -37,7 +38,6 @@ public class ChatWindow extends Activity {
                 chatMessages.add(editText.getText().toString());
                 cdh.insertMessage(editText.getText().toString());
                 editText.setText(null);
-
             }
         });
 
@@ -50,6 +50,8 @@ public class ChatWindow extends Activity {
 
     @Override
     protected void onDestroy() {
+        cdh.getReadableDatabase().close();
+        cdh.getWritableDatabase().close();
         super.onDestroy();
 
     }
