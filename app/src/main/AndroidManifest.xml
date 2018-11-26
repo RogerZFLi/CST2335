@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.amusu.androidlabs">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature
@@ -8,6 +9,7 @@
         android:required="true" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -50,7 +52,10 @@
             </intent-filter>
         </activity>
         <!-- <activity android:name=".ChatDatabaseHelper" /> -->
-        <activity android:name=".WeatherForecast"></activity>
+        <activity android:name=".WeatherForecast" />
+        <activity android:name=".MessageDetails" />
+        <!--<activity android:name=".MessageFragment" />-->
+        <!--<activity android:name=".Message"></activity>-->
     </application>
 
 </manifest>

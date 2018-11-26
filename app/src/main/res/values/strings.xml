@@ -22,4 +22,8 @@
     <string name="start_chat">Start Chat</string>
     <string name="send">Send</string>
     <string name="weather_forecast">Weather Forecast</string>
+    <string name="delete_message">Delete Message</string>
+    <string name="hint">type here</string>
+
+
 </resources>

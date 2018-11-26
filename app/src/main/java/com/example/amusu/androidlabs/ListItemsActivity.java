@@ -25,6 +25,7 @@ public class ListItemsActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_items);
+
         Log.i(ACTIVITY_NAME,"In onCreate()");
          imageButton = findViewById(R.id.ibtn);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +118,7 @@ public class ListItemsActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) throws NullPointerException{
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            Bitmap imageBitmap = (Bitmap) (extras != null ? extras.get("data") : null);
             imageButton.setImageBitmap(imageBitmap);
         }
     }

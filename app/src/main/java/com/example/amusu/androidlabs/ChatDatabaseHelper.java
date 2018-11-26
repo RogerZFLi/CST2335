@@ -14,8 +14,9 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "ChatDatabaseHelper";
     private static final String DATABASE_NAME = "Messages.db";
     private static int VERSION_NUM = 2;
-    private static final String TABLE_NAME = "MessageList";
-    private static final String KEY_ID = "_id", KEY_MESSAGE = "message";
+    protected static final String TABLE_NAME = "MessageList";
+    protected static final String KEY_ID = "_id", KEY_MESSAGE = "message";
+    protected Cursor c;
 
 
     ChatDatabaseHelper(Context ctx) {
@@ -36,35 +37,55 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
 
 
     }
-    public List<String> getAllMessages(){
-        final List<String> list = new ArrayList<>();
+    public List<Message> getAllMessages(){
+        final List<Message> list = new ArrayList<>();
         final SQLiteDatabase db = this.getReadableDatabase();
-        this.onOpen(db);
-        Cursor c = db.query(true, TABLE_NAME, null,null,null,null,null,null,null);
-        Log.i(TAG, "Cursor's column count = " + c.getColumnCount());
-        for (int i =0; i<c.getColumnCount();i++){
-            Log.i(TAG,"Column name = " + c.getColumnName(i));
+        Cursor cursor = db.query(true, TABLE_NAME, null,null,null,null,null,null,null);
+        final int cIdIndex = cursor.getColumnIndex(KEY_ID);
+        final int cMessageIndex = cursor.getColumnIndex(KEY_MESSAGE);
+        Log.i(TAG, "Cursor's column count = " + cursor.getColumnCount());
+        Log.i(TAG,"Cursor column1: " + cursor.getColumnName(cIdIndex));
+        Log.i(TAG, "Cursor Column2" + cursor.getColumnName(cMessageIndex));
+        for (int i =0; i<cursor.getColumnCount();i++){
+            Log.i(TAG,"Column name = " + cursor.getColumnName(i));
         }
-        while (c.moveToNext()) {
-            final String message = c.getString(c.getColumnIndex(KEY_MESSAGE));
-            Log.i(TAG, "SQL MESSAGE: " + message);
-            list.add(message);
+        while (cursor.moveToNext()) {
+            Log.i(TAG, "SQL MESSAGE: " + getMessageFrom(cursor).getMessage());
+            list.add(getMessageFrom(cursor));
         }
-        c.close();
         return list;
     }
 
-    public void insertMessage(String msg) {
+    public Message insertMessage(String msg) {
         final ContentValues cValue= new ContentValues();
         SQLiteDatabase db = this.getWritableDatabase();
         cValue.put(KEY_MESSAGE,msg);
         long searchId = db.insert(TABLE_NAME,null,cValue);
-        Cursor c = db.query(TABLE_NAME,new String[]{KEY_MESSAGE}, KEY_ID + " = " + searchId,null,null,null,null);
-        c.moveToFirst();
-        Log.i(TAG, "SQL MESSAGE: " + c.getString(c.getColumnIndex(KEY_MESSAGE)));
-        c.close();
+        if(searchId>0){
+            Log.i(TAG,"insert succeed!");
+
+        }else
+            Log.i(TAG,"insert failed");
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_ID +  "= ?", new String[] { String.valueOf(searchId) });
+        return cursor.moveToNext()? getMessageFrom(cursor):null;
 
     }
+
+    private Message getMessageFrom(Cursor cursor) {
+        final int columnIdIndex = cursor.getColumnIndex(KEY_ID);
+        final int columnMessageIndex = cursor.getColumnIndex(KEY_MESSAGE);
+
+        long id = cursor.getLong(columnIdIndex);
+        String txt = cursor.getString(columnMessageIndex);
+
+        final Message msg = new Message(id, txt);
+        Log.i(TAG, "SQL message text: " + txt);
+
+        return msg;
+    }
+
+
+
 }
 
 
