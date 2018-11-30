@@ -11,9 +11,10 @@
     <string name="sw">What does it do</string>
     <string name="login_button">Log in</string>
     <string name="dialog_message">Do you want to terminate the Activity?</string>
-    <string name="dialog_title">Confirmation</string>
+    <string name="dialog_title">Do you want to go back?</string>
     <string name="OK">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="no">No</string>
     <string name="response">My information to share</string>
     <string name="swOn">Switch is on</string>
     <string name="swOff">Switch is off</string>
@@ -24,6 +25,7 @@
     <string name="weather_forecast">Weather Forecast</string>
     <string name="delete_message">Delete Message</string>
     <string name="hint">type here</string>
+    <string name="ok">Yes</string>
 
 
 </resources>
